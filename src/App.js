@@ -6,6 +6,7 @@ function App() {
     const [input, setInput] = useState('');
     const [output, setOutput] = useState('');
     const [copied, setCopied] = useState(false);
+    const [harem, setHarem] = useState(0);
     const inputRef = useRef();
     const buttonRef = useRef();
 
@@ -13,15 +14,21 @@ function App() {
         setOutput((prev) => {
             let haremList = input.split('\n');
             let result = prev;
+            let haremCount = harem;
             for (let waifu of haremList) {
+                if (haremCount % 50 === 0 && haremCount) result += '\n\n'
                 waifu = waifu.trim();
                 let idx = -1;
                 for (let i in waifu) {
                     if (waifu[i] === '|') idx = i;
                 }
                 if (idx !== -1) waifu = waifu.slice(0, idx).trim();
-                if (waifu.length) result += waifu + '$';
+                if (waifu.length) {
+                    haremCount++;
+                    result += waifu + '$';
+                }
             }
+            setHarem(haremCount);
             return result;
         });
         setInput('');
@@ -31,6 +38,7 @@ function App() {
     const handleClear = () => {
         setInput('');
         setOutput('');
+        setHarem(0);
         inputRef.current.focus();
     };
 
@@ -42,7 +50,7 @@ function App() {
                 setTimeout(() => setCopied(false), 1000);
             })
             .catch((err) => {
-                console.error('Failed to copy text: ', err);
+                console.log('Failed to copy text: ', err);
             });
     };
 
@@ -65,18 +73,18 @@ function App() {
                 ></textarea>
 
                 <div className="btn-group">
-                    <button className="btn btn-add" onClick={handleAdd}>
+                    <button className="btn btn-add" onClick={handleAdd} disabled={input.length === 0}>
                         <span>Add</span>
                     </button>
                     <button className="btn btn-convert" onClick={handleClear}>
                         <span>Clear</span>
                     </button>
-                    <button className="btn btn-copy" onClick={handleCopy} ref={buttonRef} disabled={input.length}>
-                        <span>{copied ? "Copied" : "Copy"}</span>
+                    <button className="btn btn-copy" onClick={handleCopy} ref={buttonRef} disabled={input.length === 0}>
+                        <span>{copied ? 'Copied' : 'Copy'}</span>
                     </button>
                 </div>
 
-                <textarea className="output-area" rows="25" cols="50" defaultValue={output}></textarea>
+                <textarea className="output-area" rows="25" cols="50" defaultValue={output} readOnly></textarea>
             </div>
         </div>
     );
