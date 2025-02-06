@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+.header,
+.main,
+.btn-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header,
+.btn-group {
+    flex-direction: column;
+}
+
+.header {
+    font-family: 'Montserrat';
+    h1 {
+        margin-bottom: 0;
+        text-transform: uppercase;
+    }
+    h4 {
+        margin: 0;
+    }
+}
+
+.main {
+    gap: 0.5rem;
+}
+
+.wrapper {
+    text-align: center;
+}
+
+.btn-group {
+    gap: 0.5rem;
+    button {
+        width: 100%;
+        padding: 0.5rem 1.5rem;
+        border: 0;
+    }
+    .btn {
+        width: 130px;
+        height: 40px;
+        padding: 10px 25px;
+        border: 2px solid #000;
+        font-family: 'Lato', sans-serif;
+        font-weight: 500;
+        background: transparent;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        display: inline-block;
+    }
+    .btn {
+        background: #000;
+        color: #fff;
+        z-index: 1;
+        &:after {
+            position: absolute;
+            content: '';
+            width: 0;
+            height: 100%;
+            top: 0;
+            right: 0;
+            z-index: -1;
+            background: #fff;
+            transition: all 0.3s ease;
+        }
+        &:hover {
+            color: #000;
+        }
+        &:hover:after {
+            left: 0;
+            width: 100%;
+        }
+        &:active {
+            top: 2px;
+        }
+    }
+}
+
+textarea {
+    padding: 0.5rem 0.25rem;
+}
+
+@media (max-width: 768px) {
+    .main {
+        flex-direction: column;
+    }
+}
