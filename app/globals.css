@@ -1,4 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+.home-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    a {
+        text-decoration: none;
+        color: black;
+        padding: .25rem 2rem;
+        border: 1px solid black;
+        border-radius: .25rem;
+        transition: .1s all ease-in-out;
+        &:hover {
+            color: #4096ff;
+            border-color: #4096ff;
+        }
+    }
+}
+
 .header,
 .main,
 .btn-group {

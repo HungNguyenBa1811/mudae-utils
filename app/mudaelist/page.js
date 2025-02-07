@@ -1,6 +1,6 @@
+'use client';
+
 import { useState, useRef } from 'react';
-import 'normalize.css';
-import './App.css';
 
 function App() {
     const [input, setInput] = useState('');
@@ -16,7 +16,7 @@ function App() {
             let result = prev;
             let haremCount = harem;
             for (let waifu of haremList) {
-                if (haremCount % 50 === 0 && haremCount) result += '\n\n'
+                if (haremCount % 50 === 0 && haremCount) result += '\n\n';
                 waifu = waifu.trim();
                 let idx = -1;
                 for (let i in waifu) {
@@ -39,6 +39,7 @@ function App() {
         setInput('');
         setOutput('');
         setHarem(0);
+        setCopied(false);
         inputRef.current.focus();
     };
 
