@@ -32,7 +32,7 @@ function App() {
                     let user = match[1];
                     let money = Number(match[3]);
                     let taxValue = 0;
-                    if (id === 1) taxValue = Math.floor(money / 100) * 8;
+                    if (id === 1) taxValue = Math.floor(money / 100) * 10;
                     else taxValue = Math.floor(money / 100) * 5;
                     setCurrentUserList((prev) => [
                         ...prev,

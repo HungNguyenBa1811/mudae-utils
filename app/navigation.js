@@ -11,8 +11,8 @@ export default function Layout({ children }) {
         { name: 'Harem List Generator', path: '/mudaelistharem' },
         { name: 'Series List Generator', path: '/mudaelistseries' },
         { name: 'Tax Calculator', path: '/mudaetax' },
+        { name: 'Harem Note Generator', path: '/mudaenote' },
     ];
-    console.log(pathname);
     return (
         <>
             <nav className="nav-bar">
