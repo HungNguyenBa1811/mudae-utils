@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
+import Layout from '../navigation';
 
 function App() {
     const [input, setInput] = useState('');
@@ -31,7 +32,7 @@ function App() {
                     let user = match[1];
                     let money = Number(match[3]);
                     let taxValue = 0;
-                    if(id === 1) taxValue = Math.floor(money / 100) * 8;
+                    if (id === 1) taxValue = Math.floor(money / 100) * 8;
                     else taxValue = Math.floor(money / 100) * 5;
                     setCurrentUserList((prev) => [
                         ...prev,
@@ -66,46 +67,48 @@ function App() {
     };
 
     return (
-        <div className="wrapper">
-            <div className="header">
-                <h1>Mudae Tax Calculator</h1>
-                <h4>By BidenJr</h4>
-                <p>{'Copy from wtsvid, 1 user per line (Ex: :kakeraO:4. thebruhlmaoman (664398851762946058) - 158542)'}</p>
-            </div>
-            <div className="main">
-                <textarea
-                    className="input-area"
-                    rows="25"
-                    cols="50"
-                    onChange={(e) => setInput(e.target.value)}
-                    autoFocus
-                    value={input}
-                    ref={inputRef}
-                ></textarea>
-
-                <div className="btn-group">
-                    <button className="btn btn-convert" onClick={handleClear}>
-                        <span>Clear</span>
-                    </button>
-                    <button
-                        className="btn btn-add"
-                        onClick={handleCalculate}
-                        ref={buttonRef}
-                        disabled={input.length === 0}
-                    >
-                        <span>Calculate</span>
-                    </button>
-                    <button className="btn btn-add" onClick={handleView} disabled={currentUserList.length === 0}>
-                        <span>Script</span>
-                    </button>
+        <Layout>
+            <div className="wrapper">
+                <div className="header">
+                    <h1>Mudae Tax Calculator</h1>
+                    <h4>By BidenJr</h4>
+                    <p>{'Copy from wtsvid, 1 user per line (Ex: :kakeraO:4. thebruhlmaoman (664398851762946058) - 158542)'}</p>
                 </div>
-
-                <textarea className="output-area" rows="25" cols="50" defaultValue={output} readOnly></textarea>
+                <div className="main">
+                    <textarea
+                        className="input-area"
+                        rows="25"
+                        cols="50"
+                        onChange={(e) => setInput(e.target.value)}
+                        autoFocus
+                        value={input}
+                        ref={inputRef}
+                    ></textarea>
+    
+                    <div className="btn-group">
+                        <button className="btn btn-convert" onClick={handleClear}>
+                            <span>Clear</span>
+                        </button>
+                        <button
+                            className="btn btn-add"
+                            onClick={handleCalculate}
+                            ref={buttonRef}
+                            disabled={input.length === 0}
+                        >
+                            <span>Calculate</span>
+                        </button>
+                        <button className="btn btn-add" onClick={handleView} disabled={currentUserList.length === 0}>
+                            <span>Script</span>
+                        </button>
+                    </div>
+    
+                    <textarea className="output-area" rows="25" cols="50" defaultValue={output} readOnly></textarea>
+                </div>
+                <div className="result">
+                    <p>Total: {taxValueSum}</p>
+                </div>
             </div>
-            <div className="result">
-                <p>Total: {taxValueSum}</p>
-            </div>
-        </div>
+        </Layout>
     );
 }
 

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
+import Layout from '../navigation';
 
 function App() {
     const [input, setInput] = useState('');
@@ -56,38 +57,40 @@ function App() {
     };
 
     return (
-        <div className="wrapper">
-            <div className="header">
-                <h1>Mudae Series List Generator</h1>
-                <h4>By BidenJr</h4>
-                <p>{'Copy from wmmb, 1 series per line (Ex: Blue Archive - 172/172)'}</p>
-            </div>
-            <div className="main">
-                <textarea
-                    className="input-area"
-                    rows="25"
-                    cols="50"
-                    onChange={(e) => setInput(e.target.value)}
-                    autoFocus
-                    value={input}
-                    ref={inputRef}
-                ></textarea>
-
-                <div className="btn-group">
-                    <button className="btn btn-add" onClick={handleAdd} disabled={input.length === 0}>
-                        <span>Add</span>
-                    </button>
-                    <button className="btn btn-convert" onClick={handleClear}>
-                        <span>Clear</span>
-                    </button>
-                    <button className="btn btn-copy" onClick={handleCopy} ref={buttonRef} disabled={input.length === 0}>
-                        <span>{copied ? 'Copied' : 'Copy'}</span>
-                    </button>
+        <Layout>
+            <div className="wrapper">
+                <div className="header">
+                    <h1>Mudae Series List Generator</h1>
+                    <h4>By BidenJr</h4>
+                    <p>{'Copy from wmmb, 1 series per line (Ex: Blue Archive - 172/172)'}</p>
                 </div>
-
-                <textarea className="output-area" rows="25" cols="50" defaultValue={output} readOnly></textarea>
+                <div className="main">
+                    <textarea
+                        className="input-area"
+                        rows="25"
+                        cols="50"
+                        onChange={(e) => setInput(e.target.value)}
+                        autoFocus
+                        value={input}
+                        ref={inputRef}
+                    ></textarea>
+    
+                    <div className="btn-group">
+                        <button className="btn btn-add" onClick={handleAdd} disabled={input.length === 0}>
+                            <span>Add</span>
+                        </button>
+                        <button className="btn btn-convert" onClick={handleClear}>
+                            <span>Clear</span>
+                        </button>
+                        <button className="btn btn-copy" onClick={handleCopy} ref={buttonRef} disabled={output.length === 0}>
+                            <span>{copied ? 'Copied' : 'Copy'}</span>
+                        </button>
+                    </div>
+    
+                    <textarea className="output-area" rows="25" cols="50" defaultValue={output} readOnly></textarea>
+                </div>
             </div>
-        </div>
+        </Layout>
     );
 }
 
