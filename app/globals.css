@@ -6,6 +6,8 @@
     flex-direction: column;
     gap: 1rem;
     a {
+        width: 500px;
+        text-align: center;
         text-decoration: none;
         color: black;
         padding: .25rem 2rem;
