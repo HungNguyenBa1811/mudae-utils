@@ -10,8 +10,8 @@ export default function Layout({ children }) {
         { name: 'Home', path: '/' },
         { name: 'Harem List Generator', path: '/mudaelistharem' },
         { name: 'Series List Generator', path: '/mudaelistseries' },
-        { name: 'Tax Calculator', path: '/mudaetax' },
         { name: 'Harem Note Generator', path: '/mudaenote' },
+        { name: 'Tax Calculator', path: '/mudaetax' },
     ];
     return (
         <>
