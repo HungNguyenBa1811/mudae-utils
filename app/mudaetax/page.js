@@ -11,6 +11,19 @@ function App() {
     const inputRef = useRef();
     const buttonRef = useRef();
 
+    const customCalc = ({isAdmin, isTop, isHigh, money}) => {
+        if(isAdmin){
+            return Math.floor(money / 100) * 4;
+        }
+        if(isTop){
+            return Math.floor(money / 100) * 10;
+        }
+        if(isHigh){
+            return Math.floor(money / 100) * 7;
+        }
+        return Math.floor(money / 100) * 5;
+    }
+
     const handleClear = () => {
         setInput('');
         setOutput('');
@@ -25,6 +38,7 @@ function App() {
             let result = '';
             let totalValue = 0;
             let id = 0;
+            let flag = true;
             for (let user of userList) {
                 const match = user.match(/:\w+:\d+\.\s(.+?)\s\((\d+)\)\s-\s(\d+)/);
                 if (match) {
@@ -32,8 +46,16 @@ function App() {
                     let user = match[1];
                     let money = Number(match[3]);
                     let taxValue = 0;
-                    if (id === 1) taxValue = Math.floor(money / 100) * 10;
-                    else taxValue = Math.floor(money / 100) * 5;
+                    if(user == 'thebruhlmaoman')
+                        flag = false
+                    taxValue = customCalc({
+                        isAdmin: user == 'thebruhlmaoman' || user == 'thebruhlmaoman.',
+                        isHigh: flag,
+                        isTop: id === 1,
+                        money
+                    });
+                    // if (id === 1) taxValue = Math.floor(money / 100) * 10;
+                    // else taxValue = Math.floor(money / 100) * 5;
                     setCurrentUserList((prev) => [
                         ...prev,
                         {
