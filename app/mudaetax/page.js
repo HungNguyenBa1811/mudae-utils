@@ -13,13 +13,13 @@ function App() {
 
     const customCalc = ({isAdmin, isTop, isHigh, money}) => {
         if(isAdmin){
-            return Math.floor(money / 100) * 4;
+            return Math.floor(money / 1000) * 33;
         }
         if(isTop){
-            return Math.floor(money / 100) * 10;
+            return Math.floor(money / 100) * 15;
         }
         if(isHigh){
-            return Math.floor(money / 100) * 7;
+            return Math.floor(money / 100) * 9;
         }
         return Math.floor(money / 100) * 5;
     }
